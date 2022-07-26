@@ -34,24 +34,4 @@ public class RESTController {
         }
         return service.getWorker(id);
     }
-
-    @ExceptionHandler
-    public ResponseEntity<WorkerIncorrectData> handlingException
-            (NoSuchWorkerException exception){
-        WorkerIncorrectData workerIncorrectData =
-                new WorkerIncorrectData();
-        workerIncorrectData.setInfo(exception.getMessage());
-        return new ResponseEntity<>(workerIncorrectData,
-                HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<WorkerIncorrectData> handlingException
-            (Exception exception){
-        WorkerIncorrectData workerIncorrectData =
-                new WorkerIncorrectData();
-        workerIncorrectData.setInfo(exception.getMessage());
-        return new ResponseEntity<>(workerIncorrectData,
-                HttpStatus.BAD_REQUEST);
-    }
 }
